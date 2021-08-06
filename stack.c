@@ -1,16 +1,18 @@
 #include <stdlib.h>
-#include "queue.h"
+#include "stack.h"
 
-/* "Constructor" of queue */
-Queue createQueue()
+/* "Constructor" of Stack */
+Stack createStack()
 {
-    Queue Container;
+    Stack Container;
     Container.size = 0;
     return Container;
 }
 
-/* Add element of type to the end of queue */
-void addToQueue(Queue *Container, type val)
+/* Add element of type to the end of Stack 
+   addToStack(&Stack, (type)variable)
+*/
+void addToStack(Stack *Container, type val)
 {
     int index;
 
@@ -32,12 +34,13 @@ void addToQueue(Queue *Container, type val)
     Container->data[index] = val;
 }
 
-/* Return first element of queue, and delete it. */
-type popFromQueue(Queue *Container)
+/* Return last element of Stack, and delete it. */
+type backFromStack(Stack *Container)
 {
     type data;
+    int index = Container->size--;
 
-    if(Container->size > 0) data = Container->data[0];
+    if(Container->size > 0) data = Container->data[index];
     else 
     {
         printf("No elements inside of container... \n");
@@ -60,16 +63,17 @@ type popFromQueue(Queue *Container)
     return data;
 }
 
-/* Return size of queue */
-size_t sizeOfQueue(Queue *Container)
+/* Return size of Stack */
+size_t sizeOfStack(Stack *Container)
 {
     return Container->size;
 }
 
-/* Free allocated memory from queue data, and whole struct */
-void deleteQueue(Queue *Container)
+/* Free allocated memory from Stack data, and whole struct */
+void deleteStack(Stack *Container)
 {
     free(Container->data);
     free(Container);
 }
+
 
