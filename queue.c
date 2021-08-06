@@ -36,7 +36,14 @@ void addToQueue(Queue *Container, type val)
 type popFromQueue(Queue *Container)
 {
     type data;
-    data = Container->data[0];
+
+    if(Container->size > 0) data = Container->data[0];
+    else 
+    {
+        printf("No elements inside of container... \n");
+        exit(EXIT_FAILURE);
+    }
+
     
     /* Shift elements of allocated memory, one index lower */
     int i, j = 0;
@@ -46,7 +53,7 @@ type popFromQueue(Queue *Container)
         j++;
     }
 
-    /* Realocate this memory of new size */
+    /* Realocate this memory to new size */
     Container->size--;
     Container->data = realloc(Container->data, Container->size * sizeof(type));
 
