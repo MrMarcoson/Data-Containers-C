@@ -38,7 +38,7 @@ void addToStack(Stack *Container, type val)
 type backFromStack(Stack *Container)
 {
     type data;
-    int index = Container->size--;
+    size_t index = Container->size--;
 
     if(Container->size > 0) data = Container->data[index];
     else 
